@@ -1,24 +1,38 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace DrillPartOne
+
+namespace ConsoleApplication1
 {
-    class Point
-    {
-        protected int x;
-        protected int y;
-    }
-
-    class DerivedPoint : Point
-    {
-        static void Main()
+    public delegate void SampDele();
+    class Program
+    { 
+        public static void Main()
         {
-            DerivedPoint dpoint = new DerivedPoint();
+            SampDele del1, del2, del3, del4;
+            del1 = new SampDele(SampOne);
+            del2 = new SampDele(SampTwo);
+            del3 = new SampDele(SampThree);
 
-            // Direct access to protected members:
-            dpoint.x = 10;
-            dpoint.y = 15;
-            Console.WriteLine("x = {0}, y = {1}", dpoint.x, dpoint.y);
+            del4 = del1 + del2 + del3;
+            del4();
         }
+        public static void SampOne()
+        {
+            Console.WriteLine("Sample Method One Used");
+        }
+        public static void SampTwo()
+        {
+            Console.WriteLine("Sample Method Two Used");
+        }
+        public static void SampThree()
+        {
+            Console.WriteLine("Sample Method Three Used");
+        }
+        
     }
-    // Output: x = 10, y = 15
+    
 }

@@ -1,32 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace DrillPartOne
+struct StructDemo
 {
-    sealed class Program
+    private double numVal;
+    public double Xval
     {
-        public class BaseClass
+        get
         {
-            public void Display()
-            {
-                Console.WriteLine("This is a sealed class which can't be further inherited");
-            }
+            return numVal;
         }
-
-        public class Derived : BaseClass
+        set 
         {
-            //this Derived class can't inherit BaseClass because it is sealed
+            if (value < 100)
+                numVal = value;
+
+            
+                    
         }
+    }
+    public void DisplaynumVal()
+    {
+        Console.WriteLine("The value in the struct is: {0}", numVal);
+    }
+}
 
-        static void Main(string[] args)
-        {
-            BaseClass obj = new BaseClass();
-
-            obj.Display();
-
-            Console.ReadLine();
-        }
+class TestClass
+{
+    public static void Main()
+    {
+        StructDemo sd = new StructDemo();
+        sd.Xval = 65.07;
+        sd.DisplaynumVal();
     }
 }
